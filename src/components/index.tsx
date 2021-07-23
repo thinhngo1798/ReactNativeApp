@@ -1,6 +1,5 @@
 import * as React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import { Header , Button, Input } from "react-native-elements";
 import styled from 'styled-components';
 export const Page = styled(View)`
       padding: 40px 30px 0 30px;
@@ -17,6 +16,13 @@ export const CustomButton = styled(TouchableOpacity) <{color?: string}>`
       justify-content: center;
       color: white;
       margin-left: 5px;
+`
+export const ColorButton = styled(TouchableOpacity) <{color?: string}>`
+      border-radius: 5px;
+      background-color: ${p => p.color || 'red'};
+      align-items: center;
+      justify-content: center;
+      color: white;
 `
 export const ButtonContainer = styled(View)`
       display:flex;

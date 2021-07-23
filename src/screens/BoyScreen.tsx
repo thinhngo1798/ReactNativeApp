@@ -23,7 +23,6 @@ Notifications.setNotificationHandler({
           }
           const tokenData = await Notifications.getExpoPushTokenAsync()
           const token = tokenData.data
-          console.log(token);
           return token
       }
 
@@ -32,7 +31,7 @@ const BoyScreen: React.FC = () => {
       return (
             <View>
                   <Header
-                        centerComponent={{ text: 'For user 2 👩‍💻', style: { color: '#fff' } }}
+                        centerComponent={{ text: 'For user 2 🐱', style: { color: '#fff' } }}
                   />
                   <Page>
                         {!token ? <Text>If you havent got a code, please click to get one</Text> : 
@@ -42,7 +41,9 @@ const BoyScreen: React.FC = () => {
                         </View>}
                         <Button title="Click to get the code" onPress={async () => {
                               const t = await getNotificationToken();
-                              setToken(t)
+                              let cleanedToken = t?.replace('ExponentPushToken[','');
+                              cleanedToken= cleanedToken?.replace(']','');
+                              setToken(cleanedToken)
                               }}></Button>
                   </Page>
             </View>
